@@ -5,9 +5,56 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #00112c;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.homepage{
+  display: flex;  
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100vh;
+  background-image: linear-gradient( 109.6deg,  rgba(48,207,208,1) 11.2%, rgba(51,8,103,1) 92.5% );
+}
+.btn{
+  width: 18rem;
+  margin: 1rem 0;
+  background-image: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );
+  position: relative;
+  animation: btnmove 3s;
+}
+.btn:hover{
+  background-image: linear-gradient( 109.6deg,  rgba(121,203,202,1) 11.2%, rgba(119,161,211,1) 91.1% );
+}
+.input-txt{
+    margin: 2rem 0;
+    position: relative;
+    animation: mymove 3s;
+}
+.result{
+  position: relative;
+  animation: result 3s;
+}
+
+@keyframes mymove {
+  from {top: 200px;}
+  to {top: 0px;}
+}
+
+@keyframes btnmove {
+  from {left: -100px;}
+  to {left: 0px;}
+}
+h4{
+  height: 3rem;
+  width:13rem;
+  background-color: lightblue;
+}
+
+@keyframes result {
+  from {right: -100px;}
+  to {right: 0px;}
 }
