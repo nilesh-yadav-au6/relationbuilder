@@ -34,7 +34,7 @@ function Result() {
     );
     
     setTimeout(() => {
-        if(data.StatusCode == 500){
+        if(data.StatusCode === 500){
             NotificationManager.error("Error Message" , "No Relation Found")
             return
         }
