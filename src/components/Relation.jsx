@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { Table } from "react-bootstrap"
 import {NotificationContainer, NotificationManager } from 'react-notifications';
 
 function Relation() {
@@ -9,6 +10,18 @@ function Relation() {
     userName2: "",
     relation: "",
   });
+
+  const [relationList , setRelationList] = useState([]);
+
+
+  useEffect(() => {
+    async function getRelations() {
+      const { data } = await axios(`https://relationbuilder.herokuapp.com/all/relations`);
+      console.log(data)
+      setRelationList(data.users);
+    }
+    getRelations();
+  }, [relation]);
 
   const handleRelation = async (e) => {
     e.preventDefault();
@@ -23,6 +36,11 @@ function Relation() {
     setTimeout(() => {
       NotificationManager.success('Success message', 'Relation Added successfully');
       console.log(data);
+      setRelation({
+        userName1: "",
+        userName2: "",
+        relation: "",
+      })
     }, 1000);
   };
 
@@ -76,6 +94,22 @@ function Relation() {
           Submit
         </Button>
       </Form>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Relations</th>
+          </tr>
+        </thead>
+        <tbody>
+          {relationList !== []
+            ? relationList.map((user, index) => (
+                <tr key={index}>
+                  <td style={{color:"white"}}>{`${user.userName1} is ${user.relation} of ${user.userName2}`}</td>
+                </tr>
+              ))
+            : null}
+        </tbody>
+      </Table>
       <NotificationContainer />
     </div>
   );
