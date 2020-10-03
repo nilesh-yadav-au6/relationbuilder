@@ -21,6 +21,7 @@ function Relation() {
       relation
     );
     setTimeout(() => {
+      NotificationManager.success('Success message', 'Relation Added successfully');
       console.log(data);
     }, 1000);
   };

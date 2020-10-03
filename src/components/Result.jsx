@@ -75,6 +75,14 @@ function Result() {
             ))
           : null}
       </div>
+      <div style={{ display: "flex" ,flexDirection:"column" ,marginLeft:"5px"}}>
+      <h3>Result 2</h3>
+        {result !== null
+          ? result.finalResult2.map((result, index) => (
+              <h4 className="result" key={index}>{result}</h4>
+            ))
+          : null}
+      </div>
 
         </div>
     </div>
