@@ -60,9 +60,9 @@ function Relation() {
           <Form.Control
             as="select"
             name="relation"
-            value="Select"
             onChange={handleChangeRelation}
           >
+            <option>Select</option>
             <option value="Brother">Brother</option>
             <option value="Friend">Friend</option>
             <option value="Son">SOn</option>
