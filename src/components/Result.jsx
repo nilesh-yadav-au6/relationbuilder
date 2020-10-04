@@ -23,13 +23,13 @@ function Result() {
 
   const handleResult = async (e) => {
     e.preventDefault();
-    console.log(userName.userName2)
+    console.log(userName.userName2 ,userName.userName1)
     if(!userName.userName1 || !userName.userName2){
         NotificationManager.error("Error Message" , "Please entre Username")
         return
     }
     const { data } = await axios.post(
-      `https://relationbuilder.herokuapp.com/find/degree`,
+      `http://localhost:1234/find/degree`,
       userName
     );
     
@@ -69,18 +69,23 @@ function Result() {
         <div style={{display:"flex"}}>
         <div style={{ display: "flex" ,flexDirection:"column" }}>
         <h3>Result 1</h3>
+        {console.log(result)}
         {result !== null
-          ? result.finalResult1.map((result, index) => (
-              <h4 className="result" key={index}>{result}</h4>
-            ))
+          ? result.finalResult1.length === 0 ?
+          <h5 className="result">No Result</h5>
+          : result.finalResult1.map((result, index) => (
+            <h4 className="result" key={index}>{result}</h4>
+          )) 
           : null}
       </div>
       <div style={{ display: "flex" ,flexDirection:"column" ,marginLeft:"5px"}}>
       <h3>Result 2</h3>
-        {result !== null
-          ? result.finalResult2.map((result, index) => (
-              <h4 className="result" key={index}>{result}</h4>
-            ))
+      {result !== null
+          ? result.finalResult2.length === 0 ?
+          <h5 className="result">No Result</h5>
+          : result.finalResult2.map((result, index) => (
+            <h4 className="result" key={index}>{result}</h4>
+          )) 
           : null}
       </div>
 
