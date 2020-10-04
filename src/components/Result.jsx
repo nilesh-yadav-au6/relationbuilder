@@ -29,7 +29,7 @@ function Result() {
         return
     }
     const { data } = await axios.post(
-      `http://localhost:1234/find/degree`,
+      `https://relationbuilder.herokuapp.com/find/degree`,
       userName
     );
     
